@@ -24,4 +24,8 @@ public class MessageService {
 		return messages;
 	}
 	
+	public Message getMessage(String id){
+		return messages.stream().filter(m -> m.getId().equals(id)).findFirst().get();
+	}
+	
 }
