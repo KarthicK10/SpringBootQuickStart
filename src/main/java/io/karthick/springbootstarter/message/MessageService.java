@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,35 +17,30 @@ import org.springframework.stereotype.Service;
 @Service
 public class MessageService {
 	
-	private List<Message> messages =  new ArrayList<Message>(Arrays.asList(
-			new Message("1", "Hello World"),
-			new Message("2", "Hi Everyone")
-			));
+	@Autowired
+	private MessageRepository messageRepository;
 	
 	public List<Message> getAllMessages(){
+		List<Message> messages = new ArrayList<>();
+		messageRepository.findAll()
+				.forEach(messages::add);
 		return messages;
 	}
 	
 	public Message getMessage(String id){
-		return messages.stream().filter(m -> m.getId().equals(id)).findFirst().get();
+		return messageRepository.findOne(id);
 	}
 	
 	public void addMessage(Message message){
-		messages.add(message);
+		messageRepository.save(message);
 	}
 
 	public void updateMessage(Message message, String id) {
-		for(int i=0; i<messages.size(); i++){
-			Message m = messages.get(i);
-			if(m.getId().equals(id)){
-				messages.set(i, message);
-				return;
-			}
-		}
+		messageRepository.save(message);
 	}
 
 	public void deleteMessage(String id) {
-		messages.removeIf(m -> m.getId().equals(id));
+		messageRepository.delete(id);
 	}
 		
 }
