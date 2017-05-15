@@ -41,7 +41,11 @@ public class MessageController {
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/messages/{id}")
 	public void udpateMessage(@RequestBody Message message, @PathVariable String id){
-		System.out.println(message.toString() + "/\n" + id);
 		messageService.updateMessage(message, id);
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/messages/{id}")
+	public void deleteMessage(@PathVariable String id){
+		messageService.deleteMessage(id);
 	}
 }

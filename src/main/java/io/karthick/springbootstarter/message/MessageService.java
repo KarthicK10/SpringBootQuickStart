@@ -42,6 +42,9 @@ public class MessageService {
 			}
 		}
 	}
-	
+
+	public void deleteMessage(String id) {
+		messages.removeIf(m -> m.getId().equals(id));
+	}
 		
 }
