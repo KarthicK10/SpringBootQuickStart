@@ -38,4 +38,10 @@ public class MessageController {
 	public void addMessage(@RequestBody Message message){
 		messageService.addMessage(message);
 	}
+	
+	@RequestMapping(method=RequestMethod.PUT, value="/messages/{id}")
+	public void udpateMessage(@RequestBody Message message, @PathVariable String id){
+		System.out.println(message.toString() + "/\n" + id);
+		messageService.updateMessage(message, id);
+	}
 }

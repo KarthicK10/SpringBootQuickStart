@@ -32,5 +32,16 @@ public class MessageService {
 	public void addMessage(Message message){
 		messages.add(message);
 	}
+
+	public void updateMessage(Message message, String id) {
+		for(int i=0; i<messages.size(); i++){
+			Message m = messages.get(i);
+			if(m.getId().equals(id)){
+				messages.set(i, message);
+				return;
+			}
+		}
+	}
 	
+		
 }
