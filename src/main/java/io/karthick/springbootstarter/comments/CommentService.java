@@ -19,9 +19,9 @@ public class CommentService {
 	@Autowired
 	private CommentRepository commentRepository;
 	
-	public List<Comment> getAllComments(){
+	public List<Comment> getAllComments(String messageId){
 		List<Comment> comments = new ArrayList<>();
-		commentRepository.findAll()
+		commentRepository.findByMessageId(messageId)
 				.forEach(comments::add);
 		return comments;
 	}

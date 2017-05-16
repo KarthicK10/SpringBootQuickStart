@@ -28,11 +28,11 @@ public class Comment {
 		
 	}
 	
-	public Comment(String id, String comment) {
+	public Comment(String id, String comment, String messageId) {
 		super();
 		this.id = id;
 		this.comment = comment;
-		this.message = new Message("", "");
+		this.message = new Message(messageId, "");
 	}
 	
 	public Message getMessage() {

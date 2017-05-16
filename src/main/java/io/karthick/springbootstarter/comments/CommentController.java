@@ -26,9 +26,9 @@ public class CommentController {
 	@Autowired
 	private CommentService commentService;
 	
-	@RequestMapping("/messages/{id}/comments")
-	public List<Comment> getAllComments(){
-		return commentService.getAllComments();
+	@RequestMapping("/messages/{messageId}/comments")
+	public List<Comment> getAllComments(@PathVariable String messageId){
+		return commentService.getAllComments(messageId);
 	}
 	
 	@RequestMapping("/messages/{messageId}/comments/{id}")
